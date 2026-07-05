@@ -1,0 +1,8 @@
+org_id: MIL
+start_year: 1969
+end_year: 2026
+request_delay_seconds: 3
+season_delay_seconds: 5
+output_dir: data
+qualified_batter_pa_per_game: 3.1
+qualified_pitcher_ip_per_game: 1.0
