@@ -57,6 +57,9 @@ def get_affiliate_team_links(year):
     url = f"{BASE_URL}/register/affiliate.cgi?id={ORG_ID}&year={year}"
     soup = get_soup(url)
 
+    full_html = html_with_comments(soup)
+    soup = BeautifulSoup(full_html, "lxml")
+
     teams = []
     seen = set()
 
@@ -83,9 +86,11 @@ def get_affiliate_team_links(year):
             }
         )
 
+    if not teams:
+        raise RuntimeError(f"Found 0 affiliate team links for {year}. Affiliate page may be blocked or link pattern changed: {url}")
+
     return teams
-
-
+    
 def html_with_comments(soup):
     html_parts = [str(soup)]
 
